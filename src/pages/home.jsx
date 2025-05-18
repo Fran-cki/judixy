@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importation de Bootstrap
-import { faDownload, faBook, faCircle, faMessage, faExclamationTriangle, faListCheck, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faBook, faCircle, faMessage, faExclamationTriangle, faListCheck, faFilePdf, faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import'./css/home.css'
 import { supabase } from '../createClient';
@@ -87,15 +87,9 @@ export default function Home() {
                 );
                 const data_image4 = await image4.json();
 
-                if (data?.urls?.regular && data2?.urls?.regular && data_image1?.urls?.regular && data_image2?.urls?.regular &&
-                    data_image3?.urls?.regular && data_image4?.urls?.regular
+                if (data?.urls?.regular
                 ) {
-                    setImageUrl(data.urls.regular); 
-                    setImageUrl2(data2.urls.regular)
-                    setImage1(data_image1.urls.regular)
-                    setImage2(data_image2.urls.regular)
-                    setImage3(data_image3.urls.regular)
-                    setImage4(data_image4.urls.regular)
+                    setImageUrl(data.urls.regular);                     
                 } else {
                     setImageUrl(linkdefault);   
                     setImageUrl2("https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D")
@@ -104,6 +98,11 @@ export default function Home() {
                     setImage3("https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
                     setImage4("https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww")             
                 }
+                setImageUrl2(data2.urls.regular)
+                setImage1(data_image1.urls.regular)
+                setImage2(data_image2.urls.regular)
+                setImage3(data_image3.urls.regular)
+                setImage4(data_image4.urls.regular)                
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
                 setImageUrl(linkdefault);   
@@ -140,12 +139,12 @@ export default function Home() {
                         </h3>
                         <div className='row'>
                             <div className="col">
-                                <Link href={"/categorie"} className='btn btn-outline-light mt-4 rounded-5 border-2'>                        
+                                <a href={"/categorie"} className='btn btn-outline-light mt-4 rounded-5 border-2'>                        
                                     <strong>Cours <FontAwesomeIcon icon={faFilePdf} className='ms-2'/></strong>
-                                </Link>    
-                                {<Link href={"/categorie#recherche"} className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2'>                        
+                                </a>    
+                                {<a href={"/categorie#recherche"} className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2'>                        
                                     <strong>Consulter</strong>
-                                </Link>}
+                                </a>}
                             </div>
                         </div>                        
                     </div>                    
@@ -367,9 +366,7 @@ export default function Home() {
             <div className="row mb-4 d-md-block d-none">                            
                 <div className="col d-flex justify-content-center">
                     <a href="/categorie" title='Voir plus'>
-                        <FontAwesomeIcon icon={faCircle} style={{fontSize:'7px'}} className='me-2 mt-md-1 text-primary'/>
-                        <FontAwesomeIcon icon={faCircle} style={{fontSize:'7px'}} className='me-2 mt-md-1 text-primary'/>
-                        <FontAwesomeIcon icon={faCircle} style={{fontSize:'7px'}} className='me-2 mt-md-1 text-primary'/>
+                        Voir plus <FontAwesomeIcon icon={faAdd} style={{fontSize:'15px'}} className='ms-1 mt-md-1 text-primary'/>                        
                     </a>                                
                 </div>
             </div>             

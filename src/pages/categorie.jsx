@@ -189,8 +189,8 @@ function Categorie() {
                                         <div className="card text-center bd-body">
                                             <div className="card-header">                                                
                                                 <div className="mt-0 row">                                                    
-                                                    <div className="col-md-2 ">
-                                                        <div className="row">
+                                                    <div className="col-md-2">
+                                                        <div className="row d-flex justify-content-center">
                                                             <div className="col-12 px-0">
                                                                 <a
                                                                     className="nav-link active border-none py-3"
@@ -206,13 +206,13 @@ function Categorie() {
                                                                     <strong>{cat.nom}</strong>
                                                                 </a>
                                                             </div>
-                                                            <div className="col-12 px-0">
+                                                            <div className="col-md-12 col-auto px-0">
                                                                 <img
                                                                     src={cat.image}
-                                                                    className="card-img-bottom rounded-0"
+                                                                    className="img-fluid card-img-bottom rounded-0"
                                                                     alt="..."
-                                                                    style={{ maxHeight: "300px" }}
-                                                                />
+                                                                    style={{ maxHeight: "300px", objectFit: "contain" }}
+                                                                />                                                               
                                                             </div>
                                                         </div>                                                        
                                                     </div>
