@@ -21,12 +21,7 @@ export default function Home() {
         } else {                               
             setListCategorie(data);
         }
-    }
-
-    useEffect(() => {                
-        fetchDocument();
-        fetchCategorie();
-    }, []);
+    }    
 
     const listimg = ["img1.jpg", "img2.avif", "img3.avif", "img4.jpg"]
     const [image, setImage] = useState(listimg[2]);                         
@@ -65,7 +60,8 @@ export default function Home() {
                 const response2 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
-                const data2 = await response2.json();
+
+                /*const data2 = await response2.json();
 
                 const image1 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
@@ -85,36 +81,36 @@ export default function Home() {
                 const image4 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
-                const data_image4 = await image4.json();
+                const data_image4 = await image4.json();*/
 
                 if (data?.urls?.regular
                 ) {
                     setImageUrl(data.urls.regular);                     
                 } else {
-                    setImageUrl(linkdefault);   
-                    setImageUrl2("https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D")
-                    setImage1("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww")
-                    setImage2("https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww")
-                    setImage3("https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
-                    setImage4("https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww")             
+                    setImageUrl(linkdefault);                       
                 }
+                /*setImageUrl(linkdefault)
                 setImageUrl2(data2.urls.regular)
                 setImage1(data_image1.urls.regular)
                 setImage2(data_image2.urls.regular)
                 setImage3(data_image3.urls.regular)
-                setImage4(data_image4.urls.regular)                
+                setImage4(data_image4.urls.regular)*/               
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(linkdefault);   
-                setImageUrl2("https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D")         
-                setImage1("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww")
-                setImage2("https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww")
-                setImage3("https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
-                setImage4("https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww")             
+                setImageUrl(linkdefault);                   
             }
         };
 
+        setImageUrl2("https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D")         
+        setImage1("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww")
+        setImage2("https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww")
+        setImage3("https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
+        setImage4("https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww")             
+
+
         fetchImage();
+        fetchDocument();
+        fetchCategorie();
     }, []);    
 
     return (  
@@ -124,6 +120,7 @@ export default function Home() {
                     //width: "100%",
                     height: "450px",
                     backgroundImage: imageUrl? `url(${imageUrl})` : `url(${linkdefault})`,
+                    //backgroundImage: imageUrl,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundColor: "#333", // fallback
@@ -139,10 +136,10 @@ export default function Home() {
                         </h3>
                         <div className='row'>
                             <div className="col">
-                                <a href={"/categorie"} className='btn btn-outline-light mt-4 rounded-5 border-2'>                        
+                                <a href="/categorie" className='btn btn-outline-light mt-4 rounded-5 border-2'>                        
                                     <strong>Cours <FontAwesomeIcon icon={faFilePdf} className='ms-2'/></strong>
                                 </a>    
-                                {<a href={"/categorie#recherche"} className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2'>                        
+                                {<a href="" className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2'>                        
                                     <strong>Consulter</strong>
                                 </a>}
                             </div>
