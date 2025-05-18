@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './pages/navbar';  // Assure-toi de mettre le bon chemin d'importation
+import Home from './pages/home';  // Exemple de page d'accueil
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Apropos from './pages/apropos';
+import Footer from './pages/footer';
+import Categorie from './pages/categorie';
+
+import './App.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Maj 2
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>            
+            <Navbar />
+            <div className="container-fluid mt-5 pt-4">                
+                <Routes>
+                    <Route path="/" element={<Home />} />               
+                    <Route path="*" element={<Home />} /> 
+
+                    <Route path="/apropos" element={<Apropos />} />  
+                    <Route path="/categorie" element={<Categorie />} />                                   
+                </Routes>
+            </div>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;

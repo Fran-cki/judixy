@@ -1,0 +1,226 @@
+.card-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;    
+    animation: slideSoratra 0.5s ease forwards;       
+}
+@keyframes slideSoratra {
+    from {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    to {      
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+.card-container:hover .overlay {  
+    animation: slideOverley 0.5s ease forwards;
+}
+@keyframes slideOverley {    
+    to {      
+        opacity: 1;
+    }
+} 
+
+.floating-button {
+    position: fixed;
+    top: 89%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    /*background-color: #007bff;*/
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);*/
+    z-index: 100;
+}
+  
+.floating-button2 {
+    position: fixed;
+    top: 96%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    /*background-color: #007bff;*/
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);*/
+    z-index: 100;
+}
+/*
+.floating-button2:hover {
+    background-color: #0056b3;
+}  
+*/
+.listeimage2{
+    border: 2px solid rgb(185, 185, 185);    
+    transition: .2s linear;
+    cursor: pointer;
+    width: 30%;
+    height: 8.5rem;
+}
+.listeimage2:hover{
+    transform: scale(1.1);
+}
+.popup-image{    
+    position: fixed;
+    top: 0; left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+.popup-image span{
+    position: absolute;
+    top: 7%; right: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}
+.popup-image img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 750px;
+    object-fit: cover;
+}
+.popup-image h5{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    width: 750px;
+    object-fit: cover;
+    color: #fff;
+}
+.card-img-top{
+    height: 16rem;
+}
+.partenaire{
+    width: 70%;    
+}
+.btnicon{
+    margin-bottom: 4px;
+}
+.swiper-button-next {
+    font-size: 16px; /* Taille réduite pour cette breakpoint */
+}
+.ville{
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;    
+}
+.ville:hover{
+    color: orange;
+}
+.monvoyage{
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideFromLeft 2s ease forwards;
+}
+.sousmonvoyage{
+    opacity: 0;
+    transform: translateX(+100%);
+    animation: slideFromLeft 2.5s ease forwards;
+}
+.whatsapp{
+    opacity: 0;
+    transform: translateY(+100%);
+    animation: slideFromLeft 3s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+}
+@media(max-width:768px){
+    .popup-image img{
+        width: 95%;
+    }
+    .listeimage2 {
+        width: 6.48rem;        
+        height: 5rem;
+    }   
+    #btnwhatsapp{
+        font-size: 15px;
+    }
+    .centrer{
+        text-align: center;
+    }
+    .card-img-top{
+        height: 8rem;
+    }
+    .containersary{
+        height: 50vh;
+    }
+    .partenaire{
+        width: 100%;    
+    }
+    .btnicon{
+        margin-bottom: 0px;
+        margin-right: 2px;
+    }
+    .card-title{
+        font-size: 12px;
+    }
+    .card-text{
+        font-size: 12px;
+    }  
+    .ville{
+        font-size: 11px;
+    } 
+    p{
+        font-size: 12px;
+    }   
+    .tete{
+        font-size: 20px;
+    }
+    .tete2{
+        font-size: 15px;
+    }
+    .textfoot{
+        font-size: 11.5px;
+    }
+}
+
+
+@media (max-width: 320px){
+    .listeimage {
+      width: 50%;
+    } 
+    .Elnext{
+        display: none;
+    }
+}
