@@ -189,7 +189,7 @@ export default function Home() {
                 </div>                                
             </div>        
 
-            <div className="container">
+            <div className="container anime_vers_haut">
                 <div className="row border-0 mb-4 px-3 pt-2 bg-opacity-50 d-flex align-items-center">
                     <div className="col px-0">
                         <p>
@@ -221,7 +221,7 @@ export default function Home() {
                     </div>                    
                 </div>                
             </div>
-            <div className="container">
+            <div className="container anime_zoom">
                 <div className="row border-0 mb-4 px-3 pt-5 d-flex align-items-center">
                     <div className="col px-0">                                                
                         <h1 className='fs-1 mb-4'>

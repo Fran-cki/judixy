@@ -91,7 +91,7 @@ export default function Apropos() {
               <div className="row bg-light pt-md-5 pt-5 fotsy bombed-clip">  
                 <div className="col-md-9">
                   <img src="images/logo.png" alt="" width={250} className='rounded-1'/> 
-                  <p className='lead' style={{textAlign:'center'}}>
+                  <p className='' style={{textAlign:'center'}}>
                     Nous visons à devenir la référence incontournable en ligne pour toute personne 
                     souhaitant se renseigner sur les lois, réglementations, droits et libertés. 
                     Nous sommes déterminés à créer un environnement où l'échange d'informations 
