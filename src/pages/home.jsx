@@ -48,6 +48,12 @@ export default function Home() {
     const ACCESS_KEY = "LjO252Nx6QpIWRhNuEH3G6sKsNQMzbcyO2e5DR8rdH4"; // remplace par ta clé réelle
     //const linkdefault = "https://images.pexels.com/photos/6077797/pexels-photo-6077797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"    
     const linkdefault = "https://images.pexels.com/photos/8112201/pexels-photo-8112201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    const linkdef2 = "https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D"
+
+    const image1Def = "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww"
+    const image2Def = "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww"
+    const image3Def = "https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D"
+    const image4Def =  "https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww"
 
     useEffect(() => {
         const fetchImage = async () => {
@@ -56,57 +62,92 @@ export default function Home() {
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
                 const data = await response.json();
-
-                const response2 = await fetch(
-                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
-                );
-
-                /*const data2 = await response2.json();
-
-                const image1 = await fetch(
-                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
-                );
-                const data_image1 = await image1.json();
-
-                const image2 = await fetch(
-                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
-                );
-                const data_image2 = await image2.json();
-
-                const image3 = await fetch(
-                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
-                );
-                const data_image3 = await image3.json();
-
-                const image4 = await fetch(
-                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
-                );
-                const data_image4 = await image4.json();*/
-
                 if (data?.urls?.regular
                 ) {
                     setImageUrl(data.urls.regular);                     
                 } else {
                     setImageUrl(linkdefault);                       
                 }
-                /*setImageUrl(linkdefault)
-                setImageUrl2(data2.urls.regular)
-                setImage1(data_image1.urls.regular)
-                setImage2(data_image2.urls.regular)
-                setImage3(data_image3.urls.regular)
-                setImage4(data_image4.urls.regular)*/               
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
                 setImageUrl(linkdefault);                   
             }
-        };
-
-        setImageUrl2("https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D")         
-        setImage1("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww")
-        setImage2("https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww")
-        setImage3("https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
-        setImage4("https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww")             
-
+            try{
+                const response2 = await fetch(
+                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
+                );                                               
+                const data2 = await response2.json();
+                if (data2?.urls?.regular
+                ) {
+                    setImageUrl2(data2.urls.regular);                     
+                } else {
+                    setImageUrl2(linkdef2);                       
+                } 
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'image Unsplash :", error);            
+                setImageUrl(linkdef2);                   
+            }
+            try{
+                const image1 = await fetch(
+                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
+                );
+                const data_image1 = await image1.json();
+                if (data_image1?.urls?.regular
+                ) {
+                    setImage1(data_image1.urls.regular);                     
+                } else {
+                    setImage1(image1Def);                       
+                } 
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'image Unsplash :", error);            
+                setImageUrl(image1Def);                   
+            }
+            try{
+                const image2 = await fetch(
+                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
+                );
+                const data_image2 = await image2.json();
+                if (data_image2?.urls?.regular
+                ) {
+                    setImage2(data_image2.urls.regular);                     
+                } else {
+                    setImage2(image2Def);                       
+                } 
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'image Unsplash :", error);            
+                setImageUrl(image2Def);                   
+            }
+            try{
+                const image3 = await fetch(
+                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
+                );
+                const data_image3 = await image3.json();
+                if (data_image3?.urls?.regular
+                ) {
+                    setImage3(data_image3.urls.regular);                     
+                } else {
+                    setImage3(image3Def);                       
+                } 
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'image Unsplash :", error);            
+                setImageUrl(image3Def);                   
+            }
+            try{
+                const image4 = await fetch(
+                    `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
+                );
+                const data_image4 = await image4.json();
+                if (data_image4?.urls?.regular
+                ) {
+                    setImage4(data_image4.urls.regular);                     
+                } else {
+                    setImage4(image4Def);                       
+                }  
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'image Unsplash :", error);            
+                setImageUrl(image4Def);                   
+            }                                                      
+        };        
 
         fetchImage();
         fetchDocument();
