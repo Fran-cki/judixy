@@ -394,7 +394,7 @@ export default function Home() {
 
                         <div className="mt-3 mb-3 row text-center">
                             <div className="col p-0">                                
-                                <img src={imageUrl2} alt="" srcset="" className="rounded img-fluid"/>
+                                <img src={imageUrl2 ? imageUrl2 : linkdef2} alt="" srcset="" className="rounded img-fluid"/>
                             </div>                            
                         </div>
                     </div>                                                 
