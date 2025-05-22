@@ -208,16 +208,16 @@ export default function Home() {
             <div className="container">
                 <div className="row py-3">                    
                     <div className="col-md-3 col-6 mb-md-0 mb-2">
-                        <img src={image1} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
+                        <img src={image1 ? image1 : image1Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
                     </div>                    
                     <div className="col-md-3 col-6 mb-md-0 mb-2">
-                        <img src={image2} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
+                        <img src={image2  ? image2 : image2Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
                     </div>                    
                     <div className="col-md-3 col-6">
-                        <img src={image3} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
+                        <img src={image3  ? image3 : image3Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
                     </div>                    
                     <div className="col-md-3 col-6">
-                        <img src={image4} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
+                        <img src={image4  ? image4 : image4Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
                     </div>                    
                 </div>                
             </div>
