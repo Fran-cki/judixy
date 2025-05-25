@@ -85,7 +85,7 @@ export default function Home() {
                 } 
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(linkdef2);                   
+                setImageUrl2(linkdef2);                   
             }
             try{
                 const image1 = await fetch(
@@ -100,7 +100,7 @@ export default function Home() {
                 } 
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(image1Def);                   
+                setImage1(image1Def);                   
             }
             try{
                 const image2 = await fetch(
@@ -115,7 +115,7 @@ export default function Home() {
                 } 
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(image2Def);                   
+                setImage2(image2Def);                   
             }
             try{
                 const image3 = await fetch(
@@ -130,7 +130,7 @@ export default function Home() {
                 } 
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(image3Def);                   
+                setImage3(image3Def);                   
             }
             try{
                 const image4 = await fetch(
@@ -145,7 +145,7 @@ export default function Home() {
                 }  
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImageUrl(image4Def);                   
+                setImage4(image4Def);                   
             }                                                      
         };        
 
@@ -346,7 +346,7 @@ export default function Home() {
                                             onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}
                                         >
                                             <h5 className="mb-0">
-                                                <strong>{item.matiere} </strong>
+                                                <strong>{item.matiere}</strong>
                                                 <small className="text-secondary">{nomCat(item.categorie)}</small>
 
                                                 {item.payant && (

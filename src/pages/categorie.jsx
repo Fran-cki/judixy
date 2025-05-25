@@ -226,8 +226,8 @@ function Categorie() {
                                                             </div>
                                                         </div>                                                        
                                                     </div>
-                                                    <div className="col-md-8 mt-md-0 mt-3 text-start">
-                                                        <h5 className="card-title"><strong>{cat.definition}</strong></h5>
+                                                    <div className="col-md-10 mt-md-0 mt-3 text-start">
+                                                        <h5 className="card-title"><strong>Définition : </strong> {cat.definition} </h5>
                                                         <p className="card-text">
                                                             {cat.description}
                                                         </p>
