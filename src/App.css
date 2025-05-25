@@ -33,3 +33,117 @@ body {
   color: #61dafb;
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Change la couleur de l'icône toggler */
+.navbar-toggler {
+  /*border-color: white;*/
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;        
+        clip-path: inset(100% 100% 0 0)
+    }
+    to {
+        opacity: 1;        
+        clip-path: inset(0 0 0 0)
+    }
+}
+.anime{            
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes appear_carte {
+  from {
+      opacity: 0;
+      scale: 0.5;        
+  }
+  to {
+      opacity: 1;
+      scale: 1;                            
+  }
+}
+.anime_vers_haut{            
+    animation: appear_carte linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes appear_zoom {
+  from {
+      opacity: 0;
+      scale: 0.5;        
+  }
+  to {
+      opacity: 1;
+      scale: 1;                            
+  }
+}
+.anime_zoom{
+    animation: appear_zoom linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes appear_objectif {
+    from {
+        opacity: 0;
+        scale: 0.5;        
+    }
+    to {
+        opacity: 1;
+        scale: 1;                            
+    }
+}
+.anime_objectif{
+  animation: appear_objectif linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+/* styles.css */
+/* Contenu visible par défaut */
+.appear_container {
+  opacity: 1;
+  transform: none;
+}
+
+.anime_message {
+  animation: appear_message 1s ease-out;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes appear_message {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateX(-500px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* Dans ton fichier CSS (ex: App.css) */
+.wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+  display: inline-block; /* Nécessaire pour que transform fonctionne sur l'img */
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+

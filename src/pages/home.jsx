@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import'./css/home.css'
 import { supabase } from '../createClient';
 import { Link } from 'react-router-dom';
+import AppearMessage from './shared/AnimatedOnScroll';
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -221,7 +222,9 @@ export default function Home() {
                     </div>                    
                 </div>                
             </div>
-            <div className="container anime_zoom">
+            
+            {/*<AppearMessage>*/}
+            <div className="container anime_message">
                 <div className="row border-0 mb-4 px-3 pt-5 d-flex align-items-center">
                     <div className="col px-0">                                                
                         <h1 className='fs-1 mb-4'>
@@ -244,6 +247,7 @@ export default function Home() {
                     </div>                                
                 </div>
             </div>
+            {/*</AppearMessage>*/}
 
             <div className="container">
                 <div className="row bg- py-3 rounded-5">
@@ -333,7 +337,7 @@ export default function Home() {
                                                 <small className='text-secondary'>{nomCat(item.categorie)}</small>                                                
                                                 {item.payant &&
                                                     <>
-                                                        <img src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005" className='ms-3 mb-1 me-1' alt="" srcset="" style={{color:'gold'}} />
+                                                        <img src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005" className='ms-3 mb-1 me-1 wiggle' alt="" srcset="" style={{color:'gold'}} />
                                                         <strong className='fs-6 text-secondary'>Pro <span style={{color:'gold'}}>{item.prix}&euro;</span></strong>
                                                     </>
                                                 } 
