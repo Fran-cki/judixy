@@ -155,7 +155,7 @@ body {
 }
 
 .wiggle {
-  animation: wiggle-bomber 1s ease-in-out;
+  animation: wiggle-bomber 0.75s ease-in-out;
   display: inline-block;
 }
 

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { faDownload, faReplyAll, faSearch, faWarning} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import'./css/categorie.css'
 import { supabase } from '../createClient';
-import { Link } from 'react-router-dom';
 
 function Categorie() {         
     const [listFiltre, setListFiltre] = useState([])
@@ -136,7 +135,18 @@ function Categorie() {
             }
         }
         return ''; // au cas où aucun nom n'est trouvé
-    }    
+    }  
+    
+    const imgRefs = useRef({});
+    
+    const handleMouseEnter = (id) => {
+        const img = imgRefs.current[id];
+        if (!img) return;
+
+        img.classList.remove('wiggle');
+        void img.offsetWidth;
+        img.classList.add('wiggle');
+    };
     
     return (                 
         <div class="px-0 mx-0 pb-4 pt-3">                   
@@ -236,21 +246,29 @@ function Categorie() {
                                                             <div className="col-12 mb-3" key={item.id}>
                                                                 <div className="card border-start border-0 py-0">
                                                                     <div className="card-body d-flex align-items-center py-0">
-                                                                        <div className="flex-grow-1 text-start">
+                                                                        <div
+                                                                            className="flex-grow-1 text-start cur"
+                                                                            onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}
+                                                                        >
                                                                             <h5 className="mb-0">
-                                                                                <strong>{item.matiere}</strong>  
-                                                                                {item.payant &&
-                                                                                    <span className=' mx-1 px-1 py-1 rounded-3'>
-                                                                                        <img src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005" className='mb-1 me-1' alt="" srcset="" style={{color:'gold'}} />
-                                                                                        <strong className='fs-6 text-secondary'>Pro <span className='text-warning ms-1'>{item.prix}&euro;</span></strong>
+                                                                                <strong>{item.matiere} </strong>
+                                                                                <small className="text-secondary">{nomCat(item.categorie)}</small>
+
+                                                                                {item.payant && (
+                                                                                    <span ref={(el) => (imgRefs.current[item.id] = el)}>
+                                                                                        <img                                                        
+                                                                                            src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005"
+                                                                                            className="ms-3 mb-1 me-1"
+                                                                                            alt=""
+                                                                                            style={{ color: 'gold' }}
+                                                                                        />
+                                                                                        <strong className="fs-6 text-secondary">
+                                                                                            Pro <span style={{ color: 'gold' }}>{item.prix}&euro;</span>
+                                                                                        </strong>
                                                                                     </span>
-                                                                                }                                                                              
+                                                                                )}
                                                                             </h5>
-                                                                            <p
-                                                                                className="mb-0 text-grey fs-"                                                                                
-                                                                            >
-                                                                                {item.description}
-                                                                            </p>
+                                                                            <p className="mb-0 text-grey lead fs-6">{item.description}</p>
                                                                         </div>
 
                                                                         <a
@@ -261,7 +279,8 @@ function Categorie() {
                                                                             title={
                                                                                 "Télécharger le fichier pdf du livre " +
                                                                                 item.matiere
-                                                                            }                                                                            
+                                                                            }  
+                                                                            onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}                                                                    
                                                                         >
                                                                             <FontAwesomeIcon
                                                                                 icon={faDownload}
@@ -294,16 +313,26 @@ function Categorie() {
                                     <div className="col-12 mb-3" key={item.id || index}>
                                         <div className="card border-start border-0 py-0">
                                             <div className="card-body d-flex align-items-center py-0">                                
-                                                <div className="flex-grow-1 text-start">
+                                                <div
+                                                    className="flex-grow-1 text-start cur"
+                                                    onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}
+                                                >
                                                     <h5 className="mb-0">
                                                         <strong>{item.matiere}</strong>
                                                         <small className='lead text-secondary'>{nomCat(item.categorie)}</small>
-                                                        {item.payant &&
-                                                            <>
-                                                                <img src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005" className='ms-3 mb-1 me-1' alt="" srcset="" style={{color:'gold'}} />
-                                                                <strong className='fs-6 text-secondary'>Pro <span style={{color:'gold'}}>{item.prix}&euro;</span></strong>
-                                                            </>
-                                                        }   
+                                                        {item.payant && (
+                                                            <span ref={(el) => (imgRefs.current[item.id] = el)}>
+                                                                <img                                                        
+                                                                    src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005"
+                                                                    className="ms-3 mb-1 me-1"
+                                                                    alt=""
+                                                                    style={{ color: 'gold' }}
+                                                                />
+                                                                <strong className="fs-6 text-secondary">
+                                                                    Pro <span style={{ color: 'gold' }}>{item.prix}&euro;</span>
+                                                                </strong>
+                                                            </span>
+                                                        )}   
                                                     </h5>
                                                     <p className="mb-0 text-grey lead fs-6">
                                                         {item.description}
@@ -318,7 +347,8 @@ function Categorie() {
                                                     title={
                                                         "Télécharger le fichier pdf du livre " +
                                                         item.matiere
-                                                    }                                                                            
+                                                    }   
+                                                    onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}                                                                         
                                                 >
                                                     <FontAwesomeIcon
                                                         icon={faDownload}

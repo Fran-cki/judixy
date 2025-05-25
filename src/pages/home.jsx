@@ -154,14 +154,14 @@ export default function Home() {
         fetchCategorie();
     }, []); 
     
-    const imgRef = useRef(null);
-
-    const handleMouseEnter = () => {
-        const img = imgRef.current;
+    const imgRefs = useRef({});
+        
+    const handleMouseEnter = (id) => {
+        const img = imgRefs.current[id];
         if (!img) return;
 
         img.classList.remove('wiggle');
-        void img.offsetWidth; // Reflow
+        void img.offsetWidth;
         img.classList.add('wiggle');
     };
 
@@ -343,24 +343,24 @@ export default function Home() {
                                     <div className="card-body d-flex align-items-center py-0">                                
                                         <div
                                             className="flex-grow-1 text-start cur"
-                                            onMouseEnter={()=>{ item.payant && handleMouseEnter()}}
+                                            onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}
                                         >
                                             <h5 className="mb-0">
                                                 <strong>{item.matiere} </strong>
                                                 <small className="text-secondary">{nomCat(item.categorie)}</small>
 
                                                 {item.payant && (
-                                                <span ref={imgRef}>
-                                                    <img                                                        
-                                                        src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005"
-                                                        className="ms-3 mb-1 me-1"
-                                                        alt=""
-                                                        style={{ color: 'gold' }}
-                                                    />
-                                                    <strong className="fs-6 text-secondary">
-                                                        Pro <span style={{ color: 'gold' }}>{item.prix}&euro;</span>
-                                                    </strong>
-                                                </span>
+                                                    <span ref={(el) => (imgRefs.current[item.id] = el)}>
+                                                        <img                                                        
+                                                            src="https://img.icons8.com/?size=20&id=3915&format=png&color=FAB005"
+                                                            className="ms-3 mb-1 me-1"
+                                                            alt=""
+                                                            style={{ color: 'gold' }}
+                                                        />
+                                                        <strong className="fs-6 text-secondary">
+                                                            Pro <span style={{ color: 'gold' }}>{item.prix}&euro;</span>
+                                                        </strong>
+                                                    </span>
                                                 )}
                                             </h5>
                                             <p className="mb-0 text-grey lead fs-6">{item.description}</p>
@@ -375,7 +375,7 @@ export default function Home() {
                                                 "Télécharger le fichier pdf du livre " +
                                                 item.matiere
                                             }  
-                                            onMouseEnter={()=>{ item.payant && handleMouseEnter()}}                                                                          
+                                            onMouseEnter={()=>{ item.payant && handleMouseEnter(item.id)}}
                                         >
                                             <FontAwesomeIcon
                                                 icon={faDownload}
