@@ -136,14 +136,32 @@ body {
 }
 
 /* Dans ton fichier CSS (ex: App.css) */
-.wiggle {
-  animation: wiggle 1s ease-in-out infinite;
-  display: inline-block; /* Nécessaire pour que transform fonctionne sur l'img */
+@keyframes wiggle-bomber {
+  0% {
+    transform: rotate(-13deg) translateY(0);
+  }
+  25% {
+    transform: rotate(0deg) translateY(-5px); /* effet "bomber" vers le haut */
+  }
+  50% {
+    transform: rotate(13deg) translateY(0);
+  }
+  75% {
+    transform: rotate(0deg) translateY(-5px); /* encore un petit saut */
+  }
+  100% {
+    transform: rotate(-13deg) translateY(0);
+  }
 }
 
-@keyframes wiggle {
-  0% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(-10deg); }
+.wiggle {
+  animation: wiggle-bomber 1s ease-in-out;
+  display: inline-block;
 }
+
+
+.cur:hover{
+  cursor: pointer;
+}
+
 
