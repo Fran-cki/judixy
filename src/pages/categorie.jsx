@@ -180,12 +180,12 @@ function Categorie() {
                 {(listFiltre.length > 0 || !isRecherche) &&
                     <div className="row">
                         <p>
-                            Notre plateforme vous propose un large éventail de documents juridiques essentiels, 
-                            soigneusement classés par domaines de droit : <strong>{listcategorie.map(cat => cat.nom).join(', ')}</strong>. 
-                            Que vous soyez étudiant en droit, professionnel du secteur juridique ou simplement à la recherche 
-                            d’informations fiables pour vos démarches administratives, nos ressources sont conçues 
-                            pour vous accompagner à chaque étape. Grâce à une organisation claire et un contenu 
-                            rigoureux, nous facilitons l’accès au savoir juridique pour tous.
+                            Notre plateforme met à votre disposition un large éventail de documents juridiques, 
+                            classés par domaines de droit : <strong>{listcategorie.map(cat => cat.nom).join(', ')}</strong>. Les 
+                            documents <strong>gratuits</strong> couvrent les notions de base, tandis que les documents 
+                            professionnels, <strong>payants</strong>, répondent à des besoins plus approfondis. Que vous soyez 
+                            étudiant, professionnel ou en quête d’informations fiables, nos ressources sont 
+                            conçues pour vous accompagner efficacement.
                         </p>
                     </div>
                 }
@@ -298,6 +298,13 @@ function Categorie() {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="row justify-content-center mb-3">
+                                                <div className="col-md-5">
+                                                    <a href='#recherche' className='btn btn-primary'>
+                                                        Plus de documents sur {cat.nom}
+                                                    </a>
+                                                </div>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>

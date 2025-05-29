@@ -51,9 +51,15 @@ export default function Home() {
     const linkdef2 = "https://images.unsplash.com/photo-1638537690581-dc2192bfc7dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGxvaXxlbnwwfHwwfHx8MA%3D%3D"
 
     const image1Def = "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fHww"
+    const [descImage1, setDescImage1]  = useState("Bibliothèques")
     const image2Def = "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZvY2F0fGVufDB8fDB8fHww"
+    const [descImage2, setDescImage2]  = useState("Loyauté")
     const image3Def = "https://images.unsplash.com/photo-1617203443952-6d2619f7ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhd3xlbnwwfHwwfHx8MA%3D%3D"
+    const [descImage3, setDescImage3]  = useState("Document")
     const image4Def =  "https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww"
+    const [descImage4, setDescImage4]  = useState("Conseil")
+
+    const [listimage, setListImage] = useState([]);
 
     useEffect(() => {
         const fetchImage = async () => {
@@ -63,8 +69,8 @@ export default function Home() {
                 );
                 const data = await response.json();
                 if (data?.urls?.regular
-                ) {
-                    setImageUrl(data.urls.regular);                     
+                ) {                    
+                    setImageUrl(data.urls.regular);                                         
                 } else {
                     setImageUrl(linkdefault);                       
                 }
@@ -87,71 +93,98 @@ export default function Home() {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
                 setImageUrl2(linkdef2);                   
             }
-            try{
+            try {
                 const image1 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
                 const data_image1 = await image1.json();
-                if (data_image1?.urls?.regular
-                ) {
-                    setImage1(data_image1.urls.regular);                     
+
+                if (data_image1?.urls?.regular) {
+                    setImage1(data_image1.urls.regular); 
+                    
+                    // Récupération de la description ou de l'alt_description
+                    const description = data_image1.description || data_image1.alt_description || '';                    
+                    setDescImage1(description);
                 } else {
-                    setImage1(image1Def);                       
-                } 
+                    setImage1(image1Def);
+                    setDescImage1(descImage1);
+                }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImage1(image1Def);                   
+                setImage1(image1Def); 
+                setDescImage1(descImage1);
             }
             try{
                 const image2 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
                 const data_image2 = await image2.json();
-                if (data_image2?.urls?.regular
-                ) {
-                    setImage2(data_image2.urls.regular);                     
+                if (data_image2?.urls?.regular) {
+                    setImage2(data_image2.urls.regular); 
+                    
+                    // Récupération de la description ou de l'alt_description
+                    const description = data_image2.description || data_image2.alt_description || '';                    
+                    setDescImage2(description);
                 } else {
-                    setImage2(image2Def);                       
-                } 
+                    setImage2(image2Def);
+                    setDescImage2(descImage2);
+                }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImage2(image2Def);                   
+                setImage1(image1Def); 
+                setDescImage1(descImage1);
             }
             try{
                 const image3 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
                 const data_image3 = await image3.json();
-                if (data_image3?.urls?.regular
-                ) {
-                    setImage3(data_image3.urls.regular);                     
+                if (data_image3?.urls?.regular) {
+                    setImage3(data_image3.urls.regular); 
+                    
+                    // Récupération de la description ou de l'alt_description
+                    const description = data_image3.description || data_image3.alt_description || '';                    
+                    setDescImage3(description);
                 } else {
-                    setImage3(image3Def);                       
-                } 
+                    setImage3(image3Def);
+                    setDescImage3(descImage3);
+                }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImage3(image3Def);                   
+                setImage1(image1Def); 
+                setDescImage1(descImage1);
             }
             try{
                 const image4 = await fetch(
                     `https://api.unsplash.com/photos/random?query=${'law'}&client_id=${ACCESS_KEY}`
                 );
                 const data_image4 = await image4.json();
-                if (data_image4?.urls?.regular
-                ) {
-                    setImage4(data_image4.urls.regular);                     
+                if (data_image4?.urls?.regular) {
+                    setImage4(data_image4.urls.regular); 
+                    
+                    // Récupération de la description ou de l'alt_description
+                    const description = data_image4.description || data_image4.alt_description || '';                    
+                    setDescImage4(description);
                 } else {
-                    setImage4(image4Def);                       
-                }  
+                    setImage4(image4Def);
+                    setDescImage4(descImage4);
+                }
             } catch (error) {
                 console.error("Erreur lors du chargement de l'image Unsplash :", error);            
-                setImage4(image4Def);                   
-            }                                                      
+                setImage1(image1Def); 
+                setDescImage1(descImage1);
+            }                                                   
         };        
 
         fetchImage();
         fetchDocument();
         fetchCategorie();
+        setListImage([
+            {img: image1, def: image1Def, desc: descImage1},
+            {img: image2, def: image2Def, desc: descImage2},
+            {img: image3, def: image3Def, desc: descImage3},
+            {img: image4, def: image4Def, desc: descImage4}
+        ])
     }, []); 
     
     const imgRefs = useRef({});
@@ -188,12 +221,12 @@ export default function Home() {
                         </h3>
                         <div className='row'>
                             <div className="col">
-                                <a href="/categorie" className='btn btn-outline-light mt-4 rounded-5 border-2'>                        
+                                <a href="/categorie" className='btn btn-outline-light mt-4 rounded-5 border-2 px-4'>                        
                                     <strong>Cours <FontAwesomeIcon icon={faFilePdf} className='ms-2'/></strong>
                                 </a>    
-                                {<a href="" className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2'>                        
+                                <a href="" className='btn btn-outline-light mt-4 ms-5 rounded-5 border-2 px-4'>                        
                                     <strong>Consulter</strong>
-                                </a>}
+                                </a>                                
                             </div>
                         </div>                        
                     </div>                    
@@ -217,25 +250,58 @@ export default function Home() {
                 </div>
             </div>            
             <div className="container">
-                <div className="row py-3">                    
-                    <div className="col-md-3 col-6 mb-md-0 mb-2">
-                        <img src={image1 ? image1 : image1Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
-                    </div>                    
-                    <div className="col-md-3 col-6 mb-md-0 mb-2">
-                        <img src={image2  ? image2 : image2Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
-                    </div>                    
-                    <div className="col-md-3 col-6">
-                        <img src={image3  ? image3 : image3Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
-                    </div>                    
-                    <div className="col-md-3 col-6">
-                        <img src={image4  ? image4 : image4Def} alt="" srcset="" className="rounded img-fluid" style={{ maxHeight: '177px', objectFit: 'cover', width: '100%' }}/>                         
-                    </div>                    
+                <div className="row py-3">      
+                    {listimage.map((item, index) => (
+                        <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
+                            <img
+                                src={item.img ? item.img : item.def}
+                                alt={item.desc}
+                                className="rounded img-fluid"
+                                style={{
+                                    maxHeight: '177px',
+                                    objectFit: 'cover',
+                                    width: '100%',
+                                    display: 'block',
+                                    opacity: 1, // Faible opacité par défaut
+                                    transition: 'opacity 0.3s ease-in-out'
+                                }}
+                            />
+
+                            {/* Titre affiché uniquement au hover */}
+                            <div
+                                className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
+                                style={{
+                                    fontWeight: 'bold',
+                                    fontSize: '1.2rem',                                
+                                    top: '50%',
+                                    borderRadius: '0.375rem',
+                                    maxWidth: '90%',
+                                    opacity: 0,
+                                    transition: 'opacity 0.3s ease-in-out'
+                                }}
+                                // Utilise un ID ou classe CSS pour cibler en hover
+                            >
+                                {item.desc}
+                            </div>
+
+                            <style jsx>{`
+                                .group:hover img {
+                                    opacity: 0.5 !important;
+                                    cursor: pointer
+                                }
+                                .group:hover div {
+                                    opacity: 1 !important;
+                                    cursor: pointer
+                                }
+                            `}</style>
+                        </div> 
+                    ))}                                                                                                                                                                  
                 </div>                
             </div>
             
             {/*<AppearMessage>*/}
             <div className="container anime_message">
-                <div className="row border-0 mb-4 px-3 pt-5 d-flex align-items-center">
+                <div className="row border-0 mb-4 px-3 pt-3 d-flex align-items-center">
                     <div className="col px-0">                                                
                         <h1 className='fs-1 mb-4'>
                             <strong>Les avantages de visiter notre site</strong>
@@ -427,8 +493,8 @@ export default function Home() {
 
             <div className="row mb-4 d-md-block d-none">                            
                 <div className="col d-flex justify-content-center">
-                    <a href="/categorie" title='Voir plus'>
-                        Voir plus <FontAwesomeIcon icon={faAdd} style={{fontSize:'15px'}} className='ms-1 mt-md-1 text-primary'/>                        
+                    <a href="/categorie" title='Voir plus' className='btn btn-primary text-decoration-none'>
+                        Voir plus
                     </a>                                
                 </div>
             </div>             

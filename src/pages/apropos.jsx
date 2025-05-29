@@ -57,8 +57,7 @@ export default function Apropos() {
 
         return () => observer.disconnect();
     }, [anchorId]);
-
-    const image = "https://plus.unsplash.com/premium_photo-1661729685861-6d1c647e71fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxsb2l8ZW58MHx8MHx8fDA%3D"
+    
 
     const [listequipe, setListEquipe] = useState([]);
     async function fetchEquipe(){
@@ -79,11 +78,22 @@ export default function Apropos() {
         }
     }
     
+    const [image, setImage] = useState([]);
+    async function fetchImage(){
+      const { data, error } = await supabase.from('apropos').select('*');
+      if (error) {
+          console.error("Erreur lors de la récupération des catégories :", error);
+      } else {                              
+          setImage(data[0].image);
+      }
+    }
+    
     useEffect(() => {
+      fetchImage();
       fetchEquipe();
-      fetchNote();
+      fetchNote();      
     }, [])
-
+    
     return (        
         <div className='px-0 mx-0 pb-3 bg-body'>              
           <div className="row position-relative justify-content-center d-md-flex d-none">
@@ -246,7 +256,7 @@ export default function Apropos() {
                     <div className="col-md-3 col-6 border-end text-center">
                       <h1><strong className='display-1'>{note.partenariats}</strong><small className='display-6'>+</small></h1>
                       <p className="fs-5">
-                        <strong>partenariat</strong><br />dans le monde
+                        <strong>Partenariat</strong><br />dans le monde
                       </p>                      
                     </div>                    
                     <div className="col-md-3 col-6 border-md-end text-center">
