@@ -59,7 +59,7 @@ export default function Home() {
     const image4Def =  "https://plus.unsplash.com/premium_photo-1661333820879-517c5e808bfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZvY2F0fGVufDB8fDB8fHww"
     const [descImage4, setDescImage4]  = useState("Conseil")
 
-    const [listimage, setListImage] = useState([]);
+    const listimage = [];
 
     useEffect(() => {
         const fetchImage = async () => {
@@ -103,8 +103,8 @@ export default function Home() {
                     setImage1(data_image1.urls.regular); 
                     
                     // Récupération de la description ou de l'alt_description
-                    const description = data_image1.description || data_image1.alt_description || '';                    
-                    setDescImage1(description);
+                    const description = data_image1.description || data_image1.alt_description || 'tsisy';                                        
+                    setDescImage1(description);                    
                 } else {
                     setImage1(image1Def);
                     setDescImage1(descImage1);
@@ -124,6 +124,7 @@ export default function Home() {
                     
                     // Récupération de la description ou de l'alt_description
                     const description = data_image2.description || data_image2.alt_description || '';                    
+                    console.log("2 : "+description)
                     setDescImage2(description);
                 } else {
                     setImage2(image2Def);
@@ -143,7 +144,8 @@ export default function Home() {
                     setImage3(data_image3.urls.regular); 
                     
                     // Récupération de la description ou de l'alt_description
-                    const description = data_image3.description || data_image3.alt_description || '';                    
+                    const description = data_image3.description || data_image3.alt_description || '';  
+                    console.log("3 : "+description)                  
                     setDescImage3(description);
                 } else {
                     setImage3(image3Def);
@@ -163,7 +165,8 @@ export default function Home() {
                     setImage4(data_image4.urls.regular); 
                     
                     // Récupération de la description ou de l'alt_description
-                    const description = data_image4.description || data_image4.alt_description || '';                    
+                    const description = data_image4.description || data_image4.alt_description || '';   
+                    console.log("4 : "+description)                 
                     setDescImage4(description);
                 } else {
                     setImage4(image4Def);
@@ -178,13 +181,7 @@ export default function Home() {
 
         fetchImage();
         fetchDocument();
-        fetchCategorie();
-        setListImage([
-            {img: image1, def: image1Def, desc: descImage1},
-            {img: image2, def: image2Def, desc: descImage2},
-            {img: image3, def: image3Def, desc: descImage3},
-            {img: image4, def: image4Def, desc: descImage4}
-        ])
+        fetchCategorie();        
     }, []); 
     
     const imgRefs = useRef({});
@@ -251,51 +248,178 @@ export default function Home() {
             </div>            
             <div className="container">
                 <div className="row py-3">      
-                    {listimage.map((item, index) => (
-                        <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
-                            <img
-                                src={item.img ? item.img : item.def}
-                                alt={item.desc}
-                                className="rounded img-fluid"
-                                style={{
-                                    maxHeight: '177px',
-                                    objectFit: 'cover',
-                                    width: '100%',
-                                    display: 'block',
-                                    opacity: 1, // Faible opacité par défaut
-                                    transition: 'opacity 0.3s ease-in-out'
-                                }}
-                            />
+                    <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
+                        <img
+                            src={image1 ? image1 : image1Def}
+                            alt={descImage1}
+                            className="rounded img-fluid"
+                            style={{
+                                maxHeight: '177px',
+                                objectFit: 'cover',
+                                width: '100%',
+                                display: 'block',
+                                opacity: 1, // Faible opacité par défaut
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                        />
 
-                            {/* Titre affiché uniquement au hover */}
-                            <div
-                                className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
-                                style={{
-                                    fontWeight: 'bold',
-                                    fontSize: '1.2rem',                                
-                                    top: '50%',
-                                    borderRadius: '0.375rem',
-                                    maxWidth: '90%',
-                                    opacity: 0,
-                                    transition: 'opacity 0.3s ease-in-out'
-                                }}
-                                // Utilise un ID ou classe CSS pour cibler en hover
-                            >
-                                {item.desc}
-                            </div>
+                        {/* Titre affiché uniquement au hover */}
+                        <div
+                            className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
+                            style={{
+                                fontWeight: 'bold',
+                                fontSize: '1.2rem',                                
+                                top: '50%',
+                                borderRadius: '0.375rem',
+                                maxWidth: '90%',
+                                opacity: 0,
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                            // Utilise un ID ou classe CSS pour cibler en hover
+                        >
+                            {descImage1}
+                        </div>
 
-                            <style jsx>{`
-                                .group:hover img {
-                                    opacity: 0.5 !important;
-                                    cursor: pointer
-                                }
-                                .group:hover div {
-                                    opacity: 1 !important;
-                                    cursor: pointer
-                                }
-                            `}</style>
-                        </div> 
-                    ))}                                                                                                                                                                  
+                        <style jsx>{`
+                            .group:hover img {
+                                opacity: 0.5 !important;
+                                cursor: pointer
+                            }
+                            .group:hover div {
+                                opacity: 1 !important;
+                                cursor: pointer
+                            }
+                        `}</style>
+                    </div> 
+                    <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
+                        <img
+                            src={image2 ? image2 : image2Def}
+                            alt={descImage2}
+                            className="rounded img-fluid"
+                            style={{
+                                maxHeight: '177px',
+                                objectFit: 'cover',
+                                width: '100%',
+                                display: 'block',
+                                opacity: 1, // Faible opacité par défaut
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                        />
+
+                        {/* Titre affiché uniquement au hover */}
+                        <div
+                            className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
+                            style={{
+                                fontWeight: 'bold',
+                                fontSize: '1.2rem',                                
+                                top: '50%',
+                                borderRadius: '0.375rem',
+                                maxWidth: '90%',
+                                opacity: 0,
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                            // Utilise un ID ou classe CSS pour cibler en hover
+                        >
+                            {descImage2}
+                        </div>
+
+                        <style jsx>{`
+                            .group:hover img {
+                                opacity: 0.5 !important;
+                                cursor: pointer
+                            }
+                            .group:hover div {
+                                opacity: 1 !important;
+                                cursor: pointer
+                            }
+                        `}</style>
+                    </div>  
+                    <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
+                        <img
+                            src={image3 ? image3 : image3Def}
+                            alt={descImage3}
+                            className="rounded img-fluid"
+                            style={{
+                                maxHeight: '177px',
+                                objectFit: 'cover',
+                                width: '100%',
+                                display: 'block',
+                                opacity: 1, // Faible opacité par défaut
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                        />
+
+                        {/* Titre affiché uniquement au hover */}
+                        <div
+                            className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
+                            style={{
+                                fontWeight: 'bold',
+                                fontSize: '1.2rem',                                
+                                top: '50%',
+                                borderRadius: '0.375rem',
+                                maxWidth: '90%',
+                                opacity: 0,
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                            // Utilise un ID ou classe CSS pour cibler en hover
+                        >
+                            {descImage3}
+                        </div>
+
+                        <style jsx>{`
+                            .group:hover img {
+                                opacity: 0.5 !important;
+                                cursor: pointer
+                            }
+                            .group:hover div {
+                                opacity: 1 !important;
+                                cursor: pointer
+                            }
+                        `}</style>
+                    </div>    
+                    <div className="col-md-3 col-6 mb-md-0 mb-2 position-relative group">
+                        <img
+                            src={image4 ? image4 : image4Def}
+                            alt={descImage4}
+                            className="rounded img-fluid"
+                            style={{
+                                maxHeight: '177px',
+                                objectFit: 'cover',
+                                width: '100%',
+                                display: 'block',
+                                opacity: 1, // Faible opacité par défaut
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                        />
+
+                        {/* Titre affiché uniquement au hover */}
+                        <div
+                            className="position-absolute d-flex align-items-center start-50 translate-middle text-black text-center px-2"
+                            style={{
+                                fontWeight: 'bold',
+                                fontSize: '1.2rem',                                
+                                top: '50%',
+                                borderRadius: '0.375rem',
+                                maxWidth: '90%',
+                                opacity: 0,
+                                transition: 'opacity 0.3s ease-in-out'
+                            }}
+                            // Utilise un ID ou classe CSS pour cibler en hover
+                        >
+                            {descImage4}
+                        </div>
+
+                        <style jsx>{`
+                            .group:hover img {
+                                opacity: 0.5 !important;
+                                cursor: pointer
+                            }
+                            .group:hover div {
+                                opacity: 1 !important;
+                                cursor: pointer
+                            }
+                        `}</style>
+                    </div>                                                                                                                                                              
                 </div>                
             </div>
             

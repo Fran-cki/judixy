@@ -8,6 +8,7 @@ import Categorie from './pages/categorie';
 import './App.css'
 
 function App() {
+    
     return (
         <Router>            
             <Navbar />
