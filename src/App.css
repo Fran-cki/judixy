@@ -42,10 +42,7 @@ body {
   }
 }
 
-/* Change la couleur de l'icône toggler */
-.navbar-toggler {
-  /*border-color: white;*/
-}
+/* ----------------------------------------- */
 
 @keyframes appear {
     from {
